@@ -1,17 +1,21 @@
-# Use the official Python image as the base image
+# Use the Python base image
 FROM python:3.9-slim-buster
 
 # Set the working directory
 WORKDIR /usr/src/app
 
-# Copy the requirements file into the container
+# Install system dependencies required for psycopg2
+RUN apt-get update && apt-get install -y \
+    libpq-dev gcc
+
+# Copy requirements.txt
 COPY requirements.txt ./
 
-# Install the required dependencies
-RUN pip install -r requirements.txt
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the application code into the container
+# Copy the rest of the application
 COPY . .
 
-# Run the application
-CMD ["python", "channelbot.py"]
+# Specify the command to run the app
+CMD ["python", "app.py"]
