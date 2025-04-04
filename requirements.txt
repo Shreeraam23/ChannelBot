@@ -4,4 +4,9 @@ TgCrypto
 SQLAlchemy~=1.4.21
 psycopg2
 pyromod~=1.5
+telebot
+aiohttp
+requests
+aiohttp
+Flask
 gunicorn
