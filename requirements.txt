@@ -10,3 +10,4 @@ requests
 aiohttp
 Flask
 gunicorn
+psycopg2
